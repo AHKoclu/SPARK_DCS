@@ -15,7 +15,7 @@ def safe_ascii(text):
 
 st.set_page_config(page_title="IMO DCS Fuel Tracker", layout="wide", page_icon="⛽")
 
-st.title("⛽ MarineDeCarb: IMO DCS Fuel & Voyage Tracker")
+st.title("⛽ Spark: IMO DCS Fuel & Voyage Tracker")
 st.markdown("*Yeni IMO DCS kurallarına göre **Underway/Not Underway** ve tüketici bazlı yakıt ayırma otomasyonu.*")
 
 # İlk Yükleme (Örnek Verileriniz)
@@ -41,8 +41,8 @@ if "voyages" not in st.session_state:
 # Sol Menü (Sidebar) - Yeni Voyage Ekleme Alanı (Sarı Alanların Yerine)
 with st.sidebar:
     st.header("🚢 Gemi Bilgileri")
-    vessel_name = st.text_input("Gemi Adı", "M/V Marine")
-    fleet_name = st.text_input("Filo Adı", "MarineDeCarb Fleet")
+    vessel_name = st.text_input("Gemi Adı", "M/V SPARK")
+    fleet_name = st.text_input("Filo Adı", "SPARK Fleet")
     st.divider()
     st.header("➕ Yeni Voyage Ekle (Sarı Alanlar)")
     v_name = st.text_input("Voyage Adı", "Yeni Voyage")
@@ -228,7 +228,7 @@ def generate_pdf(v_name, f_name):
     pdf.ln(10)
     
     pdf.set_font("Helvetica", "I", 8)
-    pdf.cell(190, 5, safe_ascii("* Generated automatically by MarineDeCarb Simulator."), ln=True)
+    pdf.cell(190, 5, safe_ascii("* Generated automatically by SPARK DCS Simulator."), ln=True)
     
     tmp_path = os.path.join(tempfile.gettempdir(), "IMO_DCS_Fuel_Report.pdf")
     pdf.output(tmp_path)
