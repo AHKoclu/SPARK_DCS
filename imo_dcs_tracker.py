@@ -40,6 +40,10 @@ if "voyages" not in st.session_state:
 
 # Sol Menü (Sidebar) - Yeni Voyage Ekleme Alanı (Sarı Alanların Yerine)
 with st.sidebar:
+    st.header("🚢 Gemi Bilgileri")
+    vessel_name = st.text_input("Gemi Adı", "M/V Marine")
+    fleet_name = st.text_input("Filo Adı", "MarineDeCarb Fleet")
+    st.divider()
     st.header("➕ Yeni Voyage Ekle (Sarı Alanlar)")
     v_name = st.text_input("Voyage Adı", "Yeni Voyage")
     
@@ -178,12 +182,18 @@ edited_df = st.data_editor(st.session_state.voyages, num_rows="dynamic", use_con
 st.session_state.voyages = edited_df
 
 # --- PDF GENERATOR ---
-def generate_pdf():
+def generate_pdf(v_name, f_name):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Helvetica", "B", 16)
     pdf.cell(190, 10, safe_ascii("MarineDeCarb IMO DCS Fuel Tracker Report"), ln=True, align='C')
     pdf.ln(5)
+    
+    pdf.set_font("Helvetica", "B", 12)
+    pdf.cell(190, 10, safe_ascii(f"Gemi Adı: {v_name}"), ln=True)
+    pdf.cell(190, 10, safe_ascii(f"Filo Adı: {f_name}"), ln=True)
+    pdf.line(10, 45, 200, 45)
+    pdf.ln(10)
     
     pdf.set_font("Helvetica", "B", 12)
     pdf.cell(190, 10, "1. GRAND TOTALS", ln=True)
@@ -229,7 +239,7 @@ def generate_pdf():
 st.sidebar.divider()
 st.sidebar.header("📥 Raporlama")
 if st.sidebar.button("📄 PDF Rapor İndir"):
-    pdf_bytes = generate_pdf()
+    pdf_bytes = generate_pdf(vessel_name, fleet_name)
     st.sidebar.download_button(
         label="💾 Raporu Kaydet", 
         data=pdf_bytes, 
