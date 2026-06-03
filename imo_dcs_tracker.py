@@ -186,7 +186,7 @@ def generate_pdf(v_name, f_name):
     pdf = FPDF()
     pdf.add_page()
     pdf.set_font("Helvetica", "B", 16)
-    pdf.cell(190, 10, safe_ascii("MarineDeCarb IMO DCS Fuel Tracker Report"), ln=True, align='C')
+    pdf.cell(190, 10, safe_ascii("SPARK IMO DCS Fuel Tracker Report"), ln=True, align='C')
     pdf.ln(5)
     
     pdf.set_font("Helvetica", "B", 12)
