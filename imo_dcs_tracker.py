@@ -16,7 +16,7 @@ def safe_ascii(text):
 
 st.set_page_config(page_title="IMO DCS Fuel Tracker", layout="wide", page_icon="⛽")
 
-st.title("⛽ Spark: IMO DCS Fuel & Voyage Tracker")
+st.title("⛽ Spark: IMO DCS Fuel & Voyage Traccker")
 st.markdown("*Yeni IMO DCS kurallarına göre **Underway/Not Underway** ve tüketici bazlı yakıt ayırma otomasyonu.*")
 
 # İlk Yükleme (Örnek Verileriniz veya Kaydedilmiş Veriler)
